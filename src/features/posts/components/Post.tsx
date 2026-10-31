@@ -5,9 +5,9 @@ import type { Post } from "../posts.types";
 
 const PostRow = ({ post }: { post: Post }) => {
   return (
-    <Card size="sm" className="relative">
+    <Card size="sm" className="relative rounded-md border shadow-none ring-0 dark:ring-0">
       <CardHeader>
-        <h2 className="min-w-0 font-reading text-[1.375rem] leading-[1.25] font-normal tracking-[-0.01em] text-balance">
+        <h2 className="min-w-0 font-reading text-xl leading-snug font-medium">
           <Link
             to={`/posts/${post.id}`}
             className="underline-offset-[0.2em] before:absolute before:inset-0 before:content-[''] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
@@ -20,7 +20,7 @@ const PostRow = ({ post }: { post: Post }) => {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <p className="line-clamp-2 text-[0.9375rem] leading-[1.6] text-muted-foreground">
+        <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
           {post.body}
         </p>
       </CardContent>
@@ -32,7 +32,7 @@ export default PostRow;
 
 export const PostRowSkeleton = () => {
   return (
-    <Card size="sm">
+    <Card size="sm" className="rounded-md border shadow-none ring-0 dark:ring-0">
       <CardHeader>
         <Skeleton className="h-6 rounded-md" />
         <Skeleton className="h-6 w-2/3 rounded-md" />

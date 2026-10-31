@@ -11,7 +11,7 @@ const NotFoundScreen = () => {
         404
       </p>
       <div className="min-w-0 max-w-sm">
-        <h1 className="font-reading text-[1.75rem] leading-[1.15] tracking-[-0.01em]">
+        <h1 className="font-reading text-2xl leading-snug">
           This page doesn't exist
         </h1>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">

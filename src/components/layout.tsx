@@ -7,11 +7,11 @@ const Layout = () => {
   const atRoot = pathname === "/";
 
   return (
-    <div className="min-h-screen px-6 py-10 sm:px-10">
+    <div className="min-h-screen px-4 py-6">
       <div className="mx-auto w-full max-w-2xl">
-        <header className="flex items-center justify-between gap-5">
+        <header className="flex items-center justify-between gap-4 border-b pb-3">
           {atRoot ? (
-            <span className="font-reading text-lg tracking-[-0.01em]">Posts</span>
+            <span className="text-xl font-semibold">Posts</span>
           ) : (
             <Link
               to="/"

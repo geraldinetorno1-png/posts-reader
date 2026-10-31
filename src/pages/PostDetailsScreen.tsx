@@ -11,23 +11,21 @@ const toParagraphs = (body: string) =>
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
 
-const railEdge = "sm:ml-20";
-
 const PostDetailsScreen = () => {
   const { postId } = useParams();
   const { isPending, isError, error, data, refetch } = usePost(Number(postId));
 
   if (isPending) {
     return (
-      <div className="mt-12">
+      <div className="mt-6">
         <p role="status" className="sr-only">
           Loading post
         </p>
         <div aria-hidden>
           <Skeleton className="h-4 w-8 rounded-md" />
-          <Skeleton className="mt-3 h-9 rounded-lg sm:h-12" />
-          <Skeleton className="mt-2 h-9 w-3/4 rounded-lg sm:h-12" />
-          <div className={`mt-9 flex max-w-[34rem] flex-col gap-3 ${railEdge}`}>
+          <Skeleton className="mt-3 h-8 rounded-md sm:h-9" />
+          <Skeleton className="mt-2 h-8 w-3/4 rounded-md sm:h-9" />
+          <div className="mt-6 flex flex-col gap-3">
             <Skeleton className="h-4 rounded-md" />
             <Skeleton className="h-4 rounded-md" />
             <Skeleton className="h-4 w-11/12 rounded-md" />
@@ -46,7 +44,7 @@ const PostDetailsScreen = () => {
           {isMissingPost ? "404" : null}
         </p>
         <div className="min-w-0 max-w-sm">
-          <h1 className="font-reading text-[1.75rem] leading-[1.15] tracking-[-0.01em]">
+          <h1 className="font-reading text-2xl leading-snug">
             {isMissingPost ? "No post at this address" : "The post didn't load"}
           </h1>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
@@ -72,16 +70,16 @@ const PostDetailsScreen = () => {
 
   const paragraphs = toParagraphs(data.body ?? "");
   return (
-    <article className="mt-12">
+    <article className="mt-6">
       <p className="text-sm tabular-nums text-muted-foreground">#{data.id}</p>
-      <h1 className="mt-3 font-reading text-[2.125rem] leading-[1.04] tracking-[-0.025em] text-balance sm:text-[3rem]">
+      <h1 className="mt-2 font-reading text-3xl leading-tight sm:text-4xl">
         {data.title}
       </h1>
-      <div className="mt-7 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-border pt-4 text-sm text-muted-foreground">
+      <div className="mt-4 border-b pb-3 text-sm text-muted-foreground">
         {typeof data.userId === "number" && <span>Author {data.userId}</span>}
       </div>
       {paragraphs.length > 0 && (
-        <div className={`mt-9 max-w-[34rem] font-reading text-[1.0625rem] leading-[1.75] text-foreground/90 ${railEdge}`}>
+        <div className="mt-6 font-reading text-base leading-relaxed">
           {paragraphs.map((paragraph, index) => (
             <p key={index} className="mt-6 first:mt-0">
               {paragraph}

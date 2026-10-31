@@ -7,7 +7,7 @@ const PostList = () => {
 
   if (isPending) {
     return (
-      <div className="mt-10">
+      <div className="mt-6">
         <p role="status" className="sr-only">
           Loading posts
         </p>
@@ -23,7 +23,7 @@ const PostList = () => {
   if (isError) {
     return (
       <div className="mt-16 max-w-sm">
-        <h1 className="font-reading text-[1.75rem] leading-[1.15] tracking-[-0.01em]">
+        <h1 className="font-reading text-2xl leading-snug">
           The posts didn't load
         </h1>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
@@ -45,7 +45,7 @@ const PostList = () => {
   }
 
   return (
-    <div className="mt-10 flex flex-col gap-3">
+    <div className="mt-6 flex flex-col gap-3">
       {data.map((post) => (
         <PostRow post={post} key={post.id} />
       ))}
