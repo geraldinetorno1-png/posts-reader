@@ -1,4 +1,7 @@
 import { isAxiosError } from "axios";
+import Avatar from "@/components/avatar";
+import FormattedDate from "@/components/formatted-date";
+import CommentList from "@/features/comments/components/CommentList";
 import { Link, useParams } from "react-router";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -25,6 +28,10 @@ const PostDetailsScreen = () => {
           <Skeleton className="h-4 w-8 rounded-md" />
           <Skeleton className="mt-3 h-8 rounded-md sm:h-9" />
           <Skeleton className="mt-2 h-8 w-3/4 rounded-md sm:h-9" />
+          <div className="mt-4 flex items-center gap-3 border-b pb-3">
+            <Skeleton className="size-8 shrink-0 rounded-full" />
+            <Skeleton className="h-4 w-28 rounded-md" />
+          </div>
           <div className="mt-6 flex flex-col gap-3">
             <Skeleton className="h-4 rounded-md" />
             <Skeleton className="h-4 rounded-md" />
@@ -70,13 +77,20 @@ const PostDetailsScreen = () => {
 
   const paragraphs = toParagraphs(data.body ?? "");
   return (
+    <>
     <article className="mt-6">
       <p className="text-sm tabular-nums text-muted-foreground">#{data.id}</p>
       <h1 className="mt-2 font-reading text-3xl leading-tight sm:text-4xl">
         {data.title}
       </h1>
-      <div className="mt-4 border-b pb-3 text-sm text-muted-foreground">
-        {typeof data.userId === "number" && <span>Author {data.userId}</span>}
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-b pb-3 text-sm text-muted-foreground">
+        {typeof data.userId === "number" && (
+          <span className="flex items-center gap-3">
+            <Avatar>{data.userId}</Avatar>
+            Author {data.userId}
+          </span>
+        )}
+        <FormattedDate value={data.createdAt} />
       </div>
       {paragraphs.length > 0 && (
         <div className="mt-6 font-reading text-base leading-relaxed">
@@ -88,6 +102,8 @@ const PostDetailsScreen = () => {
         </div>
       )}
     </article>
+    <CommentList postId={data.id} />
+    </>
   );
 };
 
