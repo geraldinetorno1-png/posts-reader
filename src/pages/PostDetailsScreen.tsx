@@ -78,31 +78,31 @@ const PostDetailsScreen = () => {
   const paragraphs = toParagraphs(data.body ?? "");
   return (
     <>
-    <article className="mt-6">
-      <p className="text-sm tabular-nums text-muted-foreground">#{data.id}</p>
-      <h1 className="mt-2 font-reading text-3xl leading-tight sm:text-4xl">
-        {data.title}
-      </h1>
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-b pb-3 text-sm text-muted-foreground">
-        {typeof data.userId === "number" && (
-          <span className="flex items-center gap-3">
-            <Avatar>{data.userId}</Avatar>
-            Author {data.userId}
-          </span>
-        )}
-        <FormattedDate value={data.createdAt} />
-      </div>
-      {paragraphs.length > 0 && (
-        <div className="mt-6 font-reading text-base leading-relaxed">
-          {paragraphs.map((paragraph, index) => (
-            <p key={index} className="mt-6 first:mt-0">
-              {paragraph}
-            </p>
-          ))}
+      <article className="mt-6">
+        <p className="text-sm tabular-nums text-muted-foreground">#{data.id}</p>
+        <h1 className="mt-2 font-reading text-3xl leading-tight sm:text-4xl">
+          {data.title}
+        </h1>
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-b pb-3 text-sm text-muted-foreground">
+          {typeof data.userId === "number" && (
+            <span className="flex items-center gap-3">
+              <Avatar>{data.userId}</Avatar>
+              Author {data.userId}
+            </span>
+          )}
+          <FormattedDate value={data.createdAt} />
         </div>
-      )}
-    </article>
-    <CommentList postId={data.id} />
+        {paragraphs.length > 0 && (
+          <div className="mt-6 font-reading text-base leading-relaxed">
+            {paragraphs.map((paragraph, index) => (
+              <p key={index} className="mt-6 first:mt-0">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        )}
+      </article>
+      <CommentList postId={data.id} />
     </>
   );
 };
