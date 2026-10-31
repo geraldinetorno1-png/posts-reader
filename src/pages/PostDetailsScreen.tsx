@@ -51,7 +51,7 @@ const PostDetailsScreen = () => {
           </h1>
           <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
             {isMissingPost
-              ? "This post is not available. You can choose another from the list."
+              ? "This post either never existed or has been deleted."
               : error.message}
           </p>
           <div className="mt-6">

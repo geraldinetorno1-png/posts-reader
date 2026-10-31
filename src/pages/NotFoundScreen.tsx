@@ -15,7 +15,7 @@ const NotFoundScreen = () => {
           This page doesn't exist
         </h1>
         <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted-foreground">
-          We couldn't find a page at{" "}
+          Nothing is routed at{" "}
           <code className="text-foreground">{pathname}</code>.
         </p>
         <div className="mt-6">
