@@ -5,13 +5,13 @@ import type { Post } from "./posts.types";
 export const usePosts = () => {
   return useQuery({
     queryKey: ["posts"],
-    queryFn: () => getPosts(),
+    queryFn: getPosts,
   });
 };
 
-export const usePost = (id: Post["id"]) => {
+export const usePost = (postId: Post["id"]) => {
   return useQuery({
-    queryKey: ["post", id],
-    queryFn: () => getPost(id),
+    queryKey: ["post", postId],
+    queryFn: () => getPost(postId),
   });
 };
