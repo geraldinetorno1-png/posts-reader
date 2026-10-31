@@ -61,7 +61,6 @@ export function ThemeProvider({
   );
 }
 
-// Lab 10 keeps this guard for discussion: initialState means it cannot fire.
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
   if (context === undefined)
